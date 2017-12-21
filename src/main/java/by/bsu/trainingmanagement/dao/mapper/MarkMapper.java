@@ -1,12 +1,8 @@
 package by.bsu.trainingmanagement.dao.mapper;
 
-import by.bsu.trainingmanagement.dao.IStudentDAO;
-import by.bsu.trainingmanagement.dao.ITeacherDAO;
 import by.bsu.trainingmanagement.dao.ITrainingDAO;
-import by.bsu.trainingmanagement.entity.Mark;
-import by.bsu.trainingmanagement.entity.Student;
-import by.bsu.trainingmanagement.entity.Teacher;
-import by.bsu.trainingmanagement.entity.Training;
+import by.bsu.trainingmanagement.dao.IUserDAO;
+import by.bsu.trainingmanagement.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -25,17 +21,15 @@ public class MarkMapper implements RowMapper {
     private static final String MARK_ID = "mark_id";
     private static final String MARK = "mark";
 
-    private final ITeacherDAO teacherDAO;
 
     private final ITrainingDAO trainingDAO;
 
-    private final IStudentDAO studentDAO;
+    private final IUserDAO userDAO;
 
     @Autowired
-    public MarkMapper(ITeacherDAO teacherDAO, ITrainingDAO trainingDAO, IStudentDAO studentDAO) {
-        this.teacherDAO = teacherDAO;
+    public MarkMapper(ITrainingDAO trainingDAO, IUserDAO userDAO) {
         this.trainingDAO = trainingDAO;
-        this.studentDAO = studentDAO;
+        this.userDAO = userDAO;
     }
 
     @Override
@@ -45,11 +39,11 @@ public class MarkMapper implements RowMapper {
         mark.setMark(resultSet.getInt(MARK));
 
         int teacherId = resultSet.getInt(TEACHER_ID);
-        Teacher teacher = teacherDAO.findTeacher(teacherId);
+        User teacher = userDAO.findTeacher(teacherId);
         mark.setTeacher(teacher);
 
         int studentId = resultSet.getInt(STUDENT_ID);
-        Student student = studentDAO.findStudent(studentId);
+        User student = userDAO.findStudent(studentId);
         mark.setStudent(student);
 
         int trainingId = resultSet.getInt(TRAINING_ID);

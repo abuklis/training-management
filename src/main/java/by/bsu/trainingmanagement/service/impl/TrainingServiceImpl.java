@@ -3,6 +3,7 @@ package by.bsu.trainingmanagement.service.impl;
 import by.bsu.trainingmanagement.dao.ITrainingDAO;
 import by.bsu.trainingmanagement.entity.Training;
 import by.bsu.trainingmanagement.service.ITrainingService;
+import by.bsu.trainingmanagement.service.dto.TrainingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,27 +22,34 @@ public class TrainingServiceImpl implements ITrainingService{
     }
 
     @Override
-    public void addTraining(Training training) {
-
+    public void addTraining(TrainingDTO trainingDTO) {
+        trainingDAO.addTraining(trainingDTO);
     }
 
     @Override
-    public void deleteTraining(Training training) {
-
+    public void deleteTraining(int trainingId) {
+        trainingDAO.deleteTraining(trainingId);
     }
 
     @Override
-    public void updateTraining(Training training) {
-
+    public void updateTraining(TrainingDTO trainingDTO, int trainingId) {
+        trainingDAO.updateTraining(trainingDTO, trainingId);
     }
 
     @Override
     public Training findTraining(int trainingId) {
-        return null;
+        return trainingDAO.findTraining(trainingId);
     }
 
     @Override
     public List<Training> findTrainings() {
         return trainingDAO.findTrainings();
     }
+
+    @Override
+    public void updateTrainingTeacher(int trainingId, int teacherId) {
+        trainingDAO.updateTrainingTeacher(trainingId, teacherId);
+    }
+
+
 }

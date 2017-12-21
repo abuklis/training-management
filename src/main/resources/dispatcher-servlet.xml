@@ -17,8 +17,15 @@
     </bean>
 
     <aop:aspectj-autoproxy />
+
     <mvc:annotation-driven/>
+
     <bean id="logAspect" class="by.bsu.trainingmanagement.aspect.LoggerAspect" />
+
+    <bean id="bCryptPasswordEncoder"
+          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <constructor-arg value="11"/>
+    </bean>
 
     <context:annotation-config/>
     <context:component-scan base-package="by.bsu.trainingmanagement" />

@@ -10,6 +10,7 @@ public class User {
     private String firstName;
     private String lastName;
     private Faculty faculty;
+    private String role;
 
     public User(){};
 
@@ -70,15 +71,23 @@ public class User {
         this.faculty = faculty;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", faculty=" + faculty +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

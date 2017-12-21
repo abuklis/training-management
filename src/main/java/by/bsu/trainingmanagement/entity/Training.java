@@ -1,5 +1,8 @@
 package by.bsu.trainingmanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -11,11 +14,14 @@ public class Training {
     private String title;
     private String description;
     private int attendeesAmount;
-    private Teacher teacher;
+    private User teacher;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date startDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date endDate;
     private boolean isRegistrationOpen;
-    private List<Student> students;
+    @JsonIgnore
+    private List<User> users;
 
     public Training() {
     }
@@ -52,11 +58,11 @@ public class Training {
         this.attendeesAmount = attendeesAmount;
     }
 
-    public Teacher getTeacher() {
+    public User getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(Teacher teacher) {
+    public void setTeacher(User teacher) {
         this.teacher = teacher;
     }
 
@@ -84,12 +90,12 @@ public class Training {
         isRegistrationOpen = registrationOpen;
     }
 
-    public List<Student> getStudents() {
-        return students;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     @Override
@@ -103,7 +109,7 @@ public class Training {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", isRegistrationOpen=" + isRegistrationOpen +
-                ", students=" + students +
+                ", users=" + users +
                 '}';
     }
 }

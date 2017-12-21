@@ -6,13 +6,13 @@ package by.bsu.trainingmanagement.entity;
 public class Mark {
     private int markId;
     private int mark;
-    private Student student;
+    private User student;
     private Training training;
-    private Teacher teacher;
+    private User teacher;
 
     public Mark(){}
 
-    public Mark(int markId, int mark, Student student, Training training, Teacher teacher) {
+    public Mark(int markId, int mark, User student, Training training, User teacher) {
         this.markId = markId;
         this.mark = mark;
         this.student = student;
@@ -36,11 +36,11 @@ public class Mark {
         this.mark = mark;
     }
 
-    public Student getStudent() {
+    public User getStudent() {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(User student) {
         this.student = student;
     }
 
@@ -52,11 +52,11 @@ public class Mark {
         this.training = training;
     }
 
-    public Teacher getTeacher() {
+    public User getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(Teacher teacher) {
+    public void setTeacher(User teacher) {
         this.teacher = teacher;
     }
 

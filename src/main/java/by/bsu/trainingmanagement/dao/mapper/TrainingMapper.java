@@ -1,16 +1,13 @@
 package by.bsu.trainingmanagement.dao.mapper;
 
-import by.bsu.trainingmanagement.dao.IFacultyDAO;
-import by.bsu.trainingmanagement.dao.IStudentDAO;
-import by.bsu.trainingmanagement.dao.ITeacherDAO;
-import by.bsu.trainingmanagement.dao.ITrainingDAO;
-import by.bsu.trainingmanagement.entity.Student;
-import by.bsu.trainingmanagement.entity.Teacher;
+import by.bsu.trainingmanagement.dao.IUserDAO;
 import by.bsu.trainingmanagement.entity.Training;
+import by.bsu.trainingmanagement.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -30,13 +27,11 @@ public class TrainingMapper implements RowMapper {
     private static final String IS_REGISTRATION_OPEN = "is_registration_open";
     private static final String YES = "Y";
 
-    private final ITeacherDAO teacherDAO;
-    private final IStudentDAO studentDAO;
+    private final IUserDAO userDAO;
 
     @Autowired
-    public TrainingMapper(ITeacherDAO teacherDAO,IStudentDAO studentDAO) {
-        this.teacherDAO = teacherDAO;
-        this.studentDAO = studentDAO;
+    public TrainingMapper(IUserDAO userDAO) {
+        this.userDAO = userDAO;
     }
 
     @Override
@@ -47,14 +42,17 @@ public class TrainingMapper implements RowMapper {
         training.setTitle(resultSet.getString(TITLE));
         training.setDescription(resultSet.getString(DESCRIPTION));
         training.setAttendeesAmount(resultSet.getInt(ATTENDEES_AMOUNT));
-        training.setStartDate(resultSet.getDate(START_DATE));
-        training.setEndDate(resultSet.getDate(END_DATE));
+
+        Date startDate = resultSet.getDate(START_DATE);
+        Date endDate = resultSet.getDate(END_DATE);
+        training.setEndDate(endDate);
+        training.setStartDate(startDate);
         int teacherId = resultSet.getInt(TEACHER_ID);
-        Teacher teacher= teacherDAO.findTeacher(teacherId);
+        User teacher = userDAO.findTeacher(teacherId);
         training.setTeacher(teacher);
 
-        List<Student> students = studentDAO.findStudentsOnTraining(trainingId);
-        training.setStudents(students);
+        List<User> users = userDAO.findUsersOnTraining(trainingId);
+        training.setUsers(users);
         if (YES.equalsIgnoreCase(resultSet.getString(IS_REGISTRATION_OPEN))){
             training.setRegistrationOpen(Boolean.TRUE);
         } else {
