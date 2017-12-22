@@ -33,26 +33,26 @@ public class LoggerAspect {
         LOGGER.info("Result : " + result);
         LOGGER.info("******");
     }
-
-    @AfterThrowing(pointcut = "execution(* by.bsu.trainingmanagement.controller.WeatherController(..))", throwing = "e")
-    public void logAfterThrowingWeatherController(JoinPoint joinPoint, Throwable e) {
-        Signature signature = joinPoint.getSignature();
-        String methodName = signature.getName();
-        String stuff = signature.toString();
-        String arguments = Arrays.toString(joinPoint.getArgs());
-        LOGGER.error(methodName + " with arguments "
-                + arguments + "\nand the full toString: " + stuff + "\nthe exception is: "
-                + e.getMessage(), e);
-    }
-
-    @AfterThrowing(pointcut = "execution(* by.bsu.trainingmanagement.controller.TrainingController(..))", throwing = "e")
-    public void logAfterThrowingTrainingController(JoinPoint joinPoint, Throwable e) {
-        Signature signature = joinPoint.getSignature();
-        String methodName = signature.getName();
-        String stuff = signature.toString();
-        String arguments = Arrays.toString(joinPoint.getArgs());
-        LOGGER.error(methodName + " with arguments "
-                + arguments + "\nand the full toString: " + stuff + "\nthe exception is: "
-                + e.getMessage(), e);
-    }
+//
+//    @AfterThrowing(pointcut = "execution(* by.bsu.trainingmanagement.controller.WeatherController(..))", throwing = "e")
+//    public void logAfterThrowingWeatherController(JoinPoint joinPoint, Throwable e) {
+//        Signature signature = joinPoint.getSignature();
+//        String methodName = signature.getName();
+//        String stuff = signature.toString();
+//        String arguments = Arrays.toString(joinPoint.getArgs());
+//        LOGGER.error(methodName + " with arguments "
+//                + arguments + "\nand the full toString: " + stuff + "\nthe exception is: "
+//                + e.getMessage(), e);
+//    }
+//
+//    @AfterThrowing(pointcut = "execution(* by.bsu.trainingmanagement.controller.TrainingController(..))", throwing = "e")
+//    public void logAfterThrowingTrainingController(JoinPoint joinPoint, Throwable e) {
+//        Signature signature = joinPoint.getSignature();
+//        String methodName = signature.getName();
+//        String stuff = signature.toString();
+//        String arguments = Arrays.toString(joinPoint.getArgs());
+//        LOGGER.error(methodName + " with arguments "
+//                + arguments + "\nand the full toString: " + stuff + "\nthe exception is: "
+//                + e.getMessage(), e);
+//    }
 }

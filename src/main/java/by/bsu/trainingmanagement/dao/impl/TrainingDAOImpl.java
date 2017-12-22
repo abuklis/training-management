@@ -5,6 +5,8 @@ import by.bsu.trainingmanagement.dao.mapper.TrainingMapper;
 import by.bsu.trainingmanagement.entity.Training;
 import by.bsu.trainingmanagement.service.dto.TrainingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Repository;

@@ -7,6 +7,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.log4j.Logger;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import javax.json.JsonObject;
@@ -20,7 +21,6 @@ import static by.bsu.trainingmanagement.service.util.HttpClientUtil.createHttpGe
  */
 @Service
 public class WeatherServiceImpl implements IWeatherService{
-    private static final String KEY_PARAM = "Key";
     private static final String WEATHER_TEXT_PARAM = "WeatherText";
     private static final String TEMPERATURE_PARAM = "Temperature";
     private static final String METRIC_PARAM = "Metric";
@@ -29,7 +29,7 @@ public class WeatherServiceImpl implements IWeatherService{
             "http://apidev.accuweather.com/currentconditions/v1/28580.json?language=en&apikey=hoArfRosT1215";
     @Override
     public WeatherInfo viewCurrentWeather() throws IOException {
-        WeatherInfo weather = null;
+        WeatherInfo weather;
         String weatherText;
         double celsiusDegrees;
         CloseableHttpClient client = HttpClients.createDefault();

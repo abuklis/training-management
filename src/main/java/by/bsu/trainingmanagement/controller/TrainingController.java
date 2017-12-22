@@ -8,6 +8,7 @@ import by.bsu.trainingmanagement.service.dto.StudentTrainingDTO;
 import by.bsu.trainingmanagement.service.dto.TeacherDTO;
 import by.bsu.trainingmanagement.service.dto.TrainingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -56,15 +57,6 @@ public class TrainingController {
     public void deleteTraining(@PathVariable("id") int trainingId){
         service.deleteTraining(trainingId);
     }
-
-    /**
-     * Method for adding new training
-     * @param trainingDTO
-     */
-//    @PostMapping(value = "/trainings")
-//    public void addTraining(@RequestBody TrainingDTO trainingDTO){
-//        service.addTraining(trainingDTO);
-//    }
 
     /***
      * TODO FIX IT!!!

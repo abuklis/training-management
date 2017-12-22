@@ -1,5 +1,6 @@
 package by.bsu.trainingmanagement.controller.config;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;

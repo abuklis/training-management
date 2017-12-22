@@ -5,6 +5,7 @@ import by.bsu.trainingmanagement.entity.Training;
 import by.bsu.trainingmanagement.service.ITrainingService;
 import by.bsu.trainingmanagement.service.dto.TrainingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

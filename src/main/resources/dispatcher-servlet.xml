@@ -20,10 +20,10 @@
 
     <mvc:annotation-driven/>
 
-    <bean id="logAspect" class="by.bsu.trainingmanagement.aspect.LoggerAspect" />
+    <bean id="logAspect" class="by.bsu.trainingmanagement.aspect.LoggerAspect"/>
 
     <bean id="bCryptPasswordEncoder"
-          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" >
         <constructor-arg value="11"/>
     </bean>
 

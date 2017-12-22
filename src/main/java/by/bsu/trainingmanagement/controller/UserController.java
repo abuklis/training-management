@@ -4,6 +4,7 @@ import by.bsu.trainingmanagement.entity.User;
 import by.bsu.trainingmanagement.service.IUserService;
 import by.bsu.trainingmanagement.service.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,12 +21,6 @@ import java.util.List;
 @RequestMapping(value = "/api")
 @CrossOrigin(value = "http://localhost:4200")
 public class UserController {
-    private static final String BANNED_USER_MSG = "Sorry, you are banned...";
-    private static final String LOG_OUT_MESSAGE = "You've been logged out successfully.";
-    private static final String LOG_IN_SUCCESS_MSG = " have been logged in successfully.";
-    private static final String INVALID_PASS_MSG = "Invalid username or password!";
-    private static final String ACCESS_DENIED_MSG = "Access denied, please, sign in.";
-
     private final IUserService service;
 
     @Autowired

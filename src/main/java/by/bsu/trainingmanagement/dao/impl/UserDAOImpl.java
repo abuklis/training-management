@@ -4,6 +4,7 @@ import by.bsu.trainingmanagement.dao.IUserDAO;
 import by.bsu.trainingmanagement.dao.mapper.UserMapper;
 import by.bsu.trainingmanagement.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Repository;

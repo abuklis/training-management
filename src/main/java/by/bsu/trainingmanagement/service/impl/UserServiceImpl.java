@@ -5,6 +5,7 @@ import by.bsu.trainingmanagement.entity.User;
 import by.bsu.trainingmanagement.service.IUserService;
 import by.bsu.trainingmanagement.service.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

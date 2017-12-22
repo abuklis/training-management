@@ -3,6 +3,7 @@ package by.bsu.trainingmanagement.controller;
 import by.bsu.trainingmanagement.service.IWeatherService;
 import by.bsu.trainingmanagement.service.dto.WeatherInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
