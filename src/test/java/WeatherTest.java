@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.io.IOException;
+
 /**
  * Created by anyab on 21.12.2017.
  */
@@ -17,7 +19,7 @@ public class WeatherTest {
     private IWeatherService weatherService;
 
     @Test
-    public void shouldReturnNotEmptyWeatherInfo() {
+    public void shouldReturnNotEmptyWeatherInfo() throws IOException {
         assert weatherService.viewCurrentWeather().getWeatherText() != null;
     }
 

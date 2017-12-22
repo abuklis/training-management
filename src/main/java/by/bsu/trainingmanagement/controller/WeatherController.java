@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 /**
  * Created by anyab on 21.12.2017.
  */
@@ -21,7 +23,7 @@ public class WeatherController {
     }
 
     @GetMapping(value = "/weather/current")
-    public WeatherInfo viewCurrentWeather(){
+    public WeatherInfo viewCurrentWeather() throws IOException {
         return weatherService.viewCurrentWeather();
     }
 

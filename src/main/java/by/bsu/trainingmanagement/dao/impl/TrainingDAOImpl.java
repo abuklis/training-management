@@ -47,7 +47,7 @@ public class TrainingDAOImpl implements ITrainingDAO{
     @Override
     public void addTraining(TrainingDTO trainingDTO) {
         jdbcTemplate.update(SQL_INSERT_TRAINING, trainingDTO.getTitle(), trainingDTO.getDescription(),
-                trainingDTO.getAttendeesAmount(), trainingDTO.getTeacher_id(),
+                trainingDTO.getAttendeesAmount(), trainingDTO.getTeacherId(),
                 trainingDTO.getStartDate(), trainingDTO.getEndDate(), trainingDTO.getIsRegistrationOpen());
     }
 
@@ -58,7 +58,7 @@ public class TrainingDAOImpl implements ITrainingDAO{
     @Override
     public void updateTraining(TrainingDTO trainingDTO, int trainingId) {
         jdbcTemplate.update(SQL_UPDATE_TRAINING, trainingDTO.getTitle(), trainingDTO.getDescription(),
-                trainingDTO.getAttendeesAmount(), trainingDTO.getTeacher_id(),
+                trainingDTO.getAttendeesAmount(), trainingDTO.getTeacherId(),
                 trainingDTO.getStartDate(), trainingDTO.getEndDate(),
                 trainingDTO.getIsRegistrationOpen(), trainingId);
     }

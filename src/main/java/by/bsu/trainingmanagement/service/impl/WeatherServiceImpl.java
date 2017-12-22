@@ -20,7 +20,6 @@ import static by.bsu.trainingmanagement.service.util.HttpClientUtil.createHttpGe
  */
 @Service
 public class WeatherServiceImpl implements IWeatherService{
-    private static final Logger LOGGER = Logger.getLogger(WeatherServiceImpl.class);
     private static final String KEY_PARAM = "Key";
     private static final String WEATHER_TEXT_PARAM = "WeatherText";
     private static final String TEMPERATURE_PARAM = "Temperature";
@@ -29,33 +28,29 @@ public class WeatherServiceImpl implements IWeatherService{
     private static final String WEATHER_API_URL =
             "http://apidev.accuweather.com/currentconditions/v1/28580.json?language=en&apikey=hoArfRosT1215";
     @Override
-    public WeatherInfo viewCurrentWeather() {
+    public WeatherInfo viewCurrentWeather() throws IOException {
         WeatherInfo weather = null;
-        try {
-            String weatherText;
-            double celsiusDegrees;
-            CloseableHttpClient client = HttpClients.createDefault();
-            HttpGet httpGet = createHttpGetForJson(WEATHER_API_URL);
+        String weatherText;
+        double celsiusDegrees;
+        CloseableHttpClient client = HttpClients.createDefault();
+        HttpGet httpGet = createHttpGetForJson(WEATHER_API_URL);
 
-            JsonObject json = HttpClientUtil.getJsonObjectFromResponse(client, httpGet);
+        JsonObject json = HttpClientUtil.getJsonObjectFromResponse(client, httpGet);
 
-            String weatherString = json.get(WEATHER_TEXT_PARAM).toString();
-            weatherText = deleteQuotes(weatherString);
+        String weatherString = json.get(WEATHER_TEXT_PARAM).toString();
+        weatherText = deleteQuotes(weatherString);
 
-            String temperatureJson = json.get(TEMPERATURE_PARAM).toString();
-            JsonObject temperature = convertStringToJsonObject(temperatureJson);
+        String temperatureJson = json.get(TEMPERATURE_PARAM).toString();
+        JsonObject temperature = convertStringToJsonObject(temperatureJson);
 
-            String metricJson = temperature.get(METRIC_PARAM).toString();
-            JsonObject metric = convertStringToJsonObject(metricJson);
+        String metricJson = temperature.get(METRIC_PARAM).toString();
+        JsonObject metric = convertStringToJsonObject(metricJson);
 
-            String degrees = metric.get(VALUE_PARAM).toString();
-            celsiusDegrees = Double.parseDouble(degrees);
+        String degrees = metric.get(VALUE_PARAM).toString();
+        celsiusDegrees = Double.parseDouble(degrees);
 
-            weather = new WeatherInfo(weatherText, celsiusDegrees);
-            client.close();
-        } catch (IOException e) {
-            LOGGER.error("Exception is occurred during sending request to weather API" + e);
-        }
+        weather = new WeatherInfo(weatherText, celsiusDegrees);
+        client.close();
         return weather;
     }
 

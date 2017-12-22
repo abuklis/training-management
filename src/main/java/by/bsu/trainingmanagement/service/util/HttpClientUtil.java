@@ -16,18 +16,14 @@ import java.io.StringReader;
  * Created by anyab on 21.12.2017.
  */
 public class HttpClientUtil {
-    private static final Logger LOGGER = Logger.getLogger(HttpClientUtil.class);
 
-    public static JsonObject getJsonObjectFromResponse(CloseableHttpClient client, HttpGet httpGet){
-        JsonObject json = null;
-        try {
-            CloseableHttpResponse response = client.execute(httpGet);
-            String responseBody = new BasicResponseHandler().handleResponse(response);
-            String clearResponse = deleteUnnecessaryBrackets(responseBody);
-            json = convertStringToJsonObject(clearResponse);
-        } catch (IOException e) {
-            LOGGER.error("Exception is occurred during getting json object from response." + e);
-        }
+    public static JsonObject getJsonObjectFromResponse(CloseableHttpClient client, HttpGet httpGet)
+            throws IOException {
+        JsonObject json;
+        CloseableHttpResponse response = client.execute(httpGet);
+        String responseBody = new BasicResponseHandler().handleResponse(response);
+        String clearResponse = deleteUnnecessaryBrackets(responseBody);
+        json = convertStringToJsonObject(clearResponse);
         return json;
     }
 

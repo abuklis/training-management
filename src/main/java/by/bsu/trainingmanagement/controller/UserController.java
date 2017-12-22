@@ -18,6 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/api")
+@CrossOrigin(value = "http://localhost:4200")
 public class UserController {
     private static final String BANNED_USER_MSG = "Sorry, you are banned...";
     private static final String LOG_OUT_MESSAGE = "You've been logged out successfully.";

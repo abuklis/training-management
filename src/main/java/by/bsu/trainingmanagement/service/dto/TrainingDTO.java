@@ -10,7 +10,7 @@ public class TrainingDTO {
     private String title;
     private String description;
     private int attendeesAmount;
-    private int teacher_id;
+    private int teacherId;
     private Date startDate;
     private Date endDate;
     private String isRegistrationOpen;
@@ -39,12 +39,12 @@ public class TrainingDTO {
         this.attendeesAmount = attendeesAmount;
     }
 
-    public int getTeacher_id() {
-        return teacher_id;
+    public int getTeacherId() {
+        return teacherId;
     }
 
-    public void setTeacher_id(int teacher_id) {
-        this.teacher_id = teacher_id;
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
     }
 
     public Date getStartDate() {
@@ -77,7 +77,7 @@ public class TrainingDTO {
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", attendeesAmount=" + attendeesAmount +
-                ", teacher_id=" + teacher_id +
+                ", teacher_id=" + teacherId +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 '}';
